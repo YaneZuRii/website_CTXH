@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -19,7 +20,7 @@
                 <a href="/" class="text-decoration-none d-block">
                      <h4 class="fw-bold m-0" style="color: #2b3674; transition: 0.3s;" 
                           onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-                        <i class="fa-solid fa-layer-group me-2" style="color: #4318ff;"></i>CTXH 
+                        <i class="fa-solid fa-layer-group me-2" style="color: #2bf35d;"></i>CTXH 
                     </h4>
                  </a>
             </div>
@@ -27,7 +28,9 @@
                 <li class="px-3 mb-2 text-uppercase fw-bold" style="color: #a3aed1; font-size: 0.75rem;">Main Menu</li> 
                 <li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}"><i class="fa-solid fa-house"></i> Tổng quan</a></li>
                 <li><a href="/sinh-vien" class="{{ request()->is('sinh-vien') ? 'active' : '' }}"><i class="fa-solid fa-users"></i> Quản lý Sinh viên</a></li>
+                <li><a href="/su-kien" class="{{ request()->is('su-kien') ? 'active' : '' }}"><i class="fa-solid fa-calendar-days"></i> Quản lý Sự kiện</a></li>
                 <li><a href="/danh-sach-diem-danh" class="{{ request()->is('danh-sach-diem-danh') ? 'active' : '' }}"><i class="fa-solid fa-clipboard-check"></i> Điểm danh</a></li>
+                <li><a href="/tong-ket" class="{{ request()->is('tong-ket') ? 'active' : '' }}"><i class="fa-solid fa-chart-bar"></i> Tổng kết</a></li>
                 <li class="mt-2"><a href="/login"><i class="fa-solid fa-right-from-bracket text-danger"></i> <span class="text-danger">Đăng xuất</span></a></li>
             </ul>
         </nav>
@@ -36,11 +39,11 @@
             {{-- Topbar dynamic --}}
             <div class="topbar">
                 <div>
-                    <h4 class="fw-bold mb-0" style="color: #2b3674;">@yield('page-title')</h4>
+                    <h4 class="fw-bold mb-0" style="color: #3cbe8d;">@yield('page-title')</h4>
                 </div>
                 <div class="d-flex align-items-center gap-2">
                     <i class="fa-solid fa-circle-user text-secondary" style="font-size: 32px;"></i>
-                    <span class="fw-bold" style="color: #2b3674;">Admin Khang</span>
+                    <span class="fw-bold" style="color: #69e67e;">Admin Khang</span>
                 </div>
                 @yield('topbar-search')
             </div>
@@ -65,4 +68,3 @@
     </footer>
 </body>
 </html>
-

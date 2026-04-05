@@ -1,30 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-    --bg-body: #f4f7fe;
+    --bg-body: linear-gradient(135deg, #f8fff9 0%, #ecfdf5 100%);
     --card-bg: #ffffff;
-    --text-main: #2b3674;
-    --text-muted: #a3aed1;
-    --primary: #4318ff;
-    --primary-light: #f4f7fe;
-    --purple: #7209b7;
-    --green: #05cd99;
+    --text-main: #065f46;
+    --text-muted: #6b7280;
+    --primary: #05cd99;
+    --primary-light: #ecfdf5;
+    --accent: #05cd99; /* Chuyển từ blue sang green để đồng bộ */
+    --status-success: #10b981;
+    --status-warning: #f59e0b;
+    --status-danger: #ef4444;
+    --border-color: #e9edf7;
 }
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: var(--bg-body);
+    background: var(--bg-body);
     color: var(--text-main);
     margin: 0;
 }
 
-/* = layout chính = */
+/* = LAYOUT CHÍNH = */
 .wrapper { display: flex; width: 100%; align-items: stretch; }
 
 .sidebar {
     min-width: 260px; max-width: 260px; background: var(--card-bg);
     height: 100vh; position: sticky; top: 0;
-    border-right: 1px solid #e9edf7; z-index: 100;
+    border-right: 1px solid var(--border-color); z-index: 100;
 }
 .sidebar-header { padding: 24px; text-align: center; }
 .sidebar-menu { padding: 10px 20px; list-style: none; margin: 0; }
@@ -34,19 +37,24 @@ body {
     border-radius: 12px; color: #a3aed1; font-weight: 600; 
     text-decoration: none; transition: all 0.2s;
 }
-.sidebar-menu a:hover { color: var(--primary); }
+.sidebar-menu a:hover { color: var(--primary); background: rgba(5, 205, 153, 0.1); }
 .sidebar-menu a.active { 
     background-color: var(--primary-light); 
     color: var(--primary); 
+    box-shadow: 0 2px 8px rgba(5, 205, 153, 0.1);
 }
 
-.main-content { width: 100%; min-height: 100vh; }
+.main-content { width: 100%; min-height: 100vh; padding-bottom: 50px; }
 .topbar {
     padding: 20px 30px; display: flex; justify-content: space-between;
     align-items: center; position: sticky; top: 0; z-index: 99;
-    background-color: var(--bg-body);
+    background: rgba(248, 255, 249, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(5, 205, 153, 0.1);
+    margin-bottom: 24px;
 }
-/* = bảng và card = */
+
+/* = CÁC THÀNH PHẦN CARD & TABLE CHUNG = */
 .modern-card {
     background: var(--card-bg);
     border-radius: 20px;
@@ -56,53 +64,170 @@ body {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .modern-card:hover {
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    box-shadow: 0 10px 30px rgba(5, 205, 153, 0.08);
     transform: translateY(-2px);
 }
 
 .modern-table { width: 100%; border-collapse: collapse; }
 .modern-table thead th {
     color: var(--text-muted); font-weight: 600; font-size: 0.85rem;
-    padding: 16px; border-bottom: 1px solid #e9edf7; text-transform: uppercase;
+    padding: 16px; border-bottom: 1px solid var(--border-color); text-transform: uppercase;
 }
 .modern-table tbody td {
     padding: 16px; color: var(--text-main); font-weight: 600;
-    border-bottom: 1px solid #e9edf7; vertical-align: middle;
+    border-bottom: 1px solid var(--border-color); vertical-align: middle;
 }
-.modern-table tbody tr:hover {
-    background-color: rgba(67, 24, 255, 0.02); 
+.modern-table tbody tr:hover { background-color: rgba(5, 205, 153, 0.03); }
+
+/* = STATUS BADGES (Dùng cho toàn app) = */
+.status-badge {
+    padding: 6px 16px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-block;
+}
+.badge-active { background: #dcfce7; color: #15803d; }
+.badge-inactive { background: #fee2e2; color: #b91c1c; }
+.badge-warning { background: #fef3c7; color: #92400e; }
+
+/* = DASHBOARD & TỔNG KẾT STYLES = */
+.stat-icon-box {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+.bg-soft-primary { background: rgba(5, 205, 153, 0.1); color: var(--primary); }
+.bg-soft-success { background: rgba(16, 185, 129, 0.1); color: var(--status-success); }
+.bg-soft-warning { background: rgba(245, 158, 11, 0.1); color: var(--status-warning); }
+.bg-soft-danger { background: rgba(239, 68, 68, 0.1); color: var(--status-danger); }
+
+/* Custom Progress Bar */
+.progress { background-color: #f1f5f9; overflow: hidden; }
+.progress-bar { background-color: var(--primary); border-radius: 10px; }
+
+/* = SINH VIÊN VIEW (CARDS TO RÕ) = */
+.student-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #edf2f7;
+    padding: 32px; /* Khung to ra */
+    transition: all 0.3s ease;
+}
+.student-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(5, 205, 153, 0.1) !important;
+}
+.avatar-circle {
+    width: 64px; height: 64px;
+    background: linear-gradient(135deg, var(--primary), #34d399);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 14px;
+    font-weight: 800; font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(5, 205, 153, 0.2);
+}
+.student-name { font-size: 1.25rem; font-weight: 700; color: var(--text-main); }
+.student-info { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+.btn-edit-modern { 
+    background: var(--primary); color: white; border: none; 
+    border-radius: 10px; padding: 10px 30px; font-weight: 700; transition: 0.2s; 
+}
+.btn-delete-modern { 
+    background: #fff5f5; color: #ff5c5c; border: 1px solid #ffeded; 
+    border-radius: 10px; padding: 10px 30px; font-weight: 700; transition: 0.2s; 
+}
+.btn-edit-modern:hover { opacity: 0.9; transform: scale(1.02); }
+.btn-delete-modern:hover { background: #ff5c5c; color: white; }
+
+/* ===== EVENT PAGE STYLES - GLASSMORPHISM & GREEN THEME ===== */
+
+/* Hiệu ứng mờ nền và đổ bóng mềm mại cho thẻ Sự kiện */
+.glass-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 8px 32px rgba(5, 205, 153, 0.1);
 }
 
-/* = login/register = */
+/* Hiệu ứng nổi 3D mượt mà khi di chuột qua thẻ */
+.event-card-hover {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.event-card-hover:hover {
+    transform: translateY(-8px); /* Thẻ nổi lên */
+    box-shadow: 0 20px 40px rgba(5, 205, 153, 0.2); /* Đổ bóng đậm hơn */
+}
+
+/* Hiệu ứng phóng to hình ảnh */
+.event-card-hover:hover .event-img-zoom {
+    transform: scale(1.1);
+}
+
+/* Chuyển màu tiêu đề khi di chuột qua thẻ */
+.event-card-hover:hover .event-title {
+    color: #05cd99 !important;
+}
+
+/* Cấu hình thời gian chuyển đổi cho hình ảnh */
+.event-img-zoom {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== TƯƠNG TÁC PHẦN ĐIỂM DANH ===== */
+
+/* Đảm bảo bảng có các đường kẻ mảnh như Figma */
+.modern-table tbody td {
+    border-bottom: 1px solid #e9edf7;
+}
+
+/* Hiệu ứng hover cho nút Thêm User */
+.btn-primary:hover {
+    background-color: #04b386 !important;
+    transform: translateY(-1px);
+}
+
+/* Badges trạng thái cho điểm danh - Green Theme */
+.badge-checkin {
+    background: rgba(5, 205, 153, 0.1);
+    color: #05cd99;
+    border-radius: 99px;
+}
+/* = LOGIN/REGISTER = */
 .auth-container { 
     min-height: 100vh; display: flex; align-items: center; justify-content: center; 
     padding: 40px 20px;
 }
-.auth-card { width: 100%; max-width: 500px; padding: 40px; border-radius: 24px; }
+.auth-card { background: white; width: 100%; max-width: 500px; padding: 40px; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
 .form-control-saas { 
-    border-radius: 12px; padding: 12px 16px; border: 1px solid #e9edf7; 
+    border-radius: 12px; padding: 14px 18px; border: 1px solid #e9edf7; 
     background-color: #f8fafc; width: 100%; display: block; transition: 0.2s;
 }
 .form-control-saas:focus { 
-    border-color: var(--primary); box-shadow: 0 0 0 0.25rem rgba(67, 24, 255, 0.1); outline: none; background: white;
+    border-color: var(--primary); box-shadow: 0 0 0 0.25rem rgba(5, 205, 153, 0.1); outline: none; background: white;
 }
-.btn-primary-saas { 
-    background-color: var(--primary); border: none; border-radius: 12px; 
-    padding: 12px; font-weight: 600; width: 100%; color: white; transition: 0.3s; 
-}
-.btn-primary-saas:hover { background-color: #3311cc; }
 
-/* thanh cuộn */
-::-webkit-scrollbar { 
-    width: 8px; 
+/* = THANH CUỘN = */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* = GLASSMORPHISM & UTILITIES = */
+.glass-card {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
 }
-::-webkit-scrollbar-track { 
-    background: #f1f1f1; 
-}
-::-webkit-scrollbar-thumb { 
-    background: #c1c1c1; 
-    border-radius: 4px; 
-}
-::-webkit-scrollbar-thumb:hover { 
-    background: #888; 
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--text-main), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
