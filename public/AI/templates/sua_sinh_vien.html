@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Sửa {{ sv.ho_ten }}{% endblock %}
+{% block content %}
+<h1>Sửa thông tin {{ sv.ma_sv }}</h1>
+<form method="post" enctype="multipart/form-data">
+    <label>Mã SV: <code>{{ sv.ma_sv }}</code> (không đổi)</label>
+    <label>Họ tên:
+        <input type="text" name="ho_ten" value="{{ sv.ho_ten }}" required>
+    </label>
+    <label>Ngày sinh:
+        <input type="date" name="ngay_sinh" value="{{ sv.ngay_sinh or '' }}" required>
+    </label>
+    <label>Lớp:
+        <input type="text" name="lop" value="{{ sv.lop or '' }}">
+    </label>
+    <label>Khoa:
+        <input type="text" name="khoa" value="{{ sv.khoa or '' }}">
+    </label>
+    <label>Ảnh mới (tùy chọn, giữ cũ nếu bỏ trống):
+        <input type="file" name="anh" accept="image/*">
+    </label>
+    <input type="submit" value="Cập nhật">
+    <a href="{{ url_for('danh_sach') }}">← Quay lại danh sách</a>
+</form>
+{% endblock %}
+

@@ -20,6 +20,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'maSV',
+        'maQR',
+        'avatar',
+        'lopHoc',
+        'nganhHoc',
+    ];
+
+    protected $appends = [
+        'avatar_url',
     ];
 
     /**
@@ -43,6 +53,16 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function getAvatarUrlAttribute(): string
+    {
+        $avatar = (string) ($this->avatar ?? '');
+        if ($avatar === '') {
+            return '';
+        }
+        $normalized = str_replace('\\', '/', trim($avatar));
+        return route('media.avatar', ['path' => $normalized]);
     }
 }
 

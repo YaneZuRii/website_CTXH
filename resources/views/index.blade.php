@@ -15,7 +15,7 @@
                     </div>
                     <div>
                         <p class="text-muted fw-semibold mb-0 small">Tổng số SV</p>
-                        <h3 class="fw-bold mb-0" style="color: #2b3674;">4</h3>
+                        <h3 class="fw-bold mb-0" id="total-sv-count" style="color: #2b3674;">...</h3>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                     </div>
                     <div>
                         <p class="text-muted fw-semibold mb-0 small">Tổng số Sự kiện</p>
-                        <h3 class="fw-bold mb-0" style="color: #2b3674;">5</h3>
+                        <h3 class="fw-bold mb-0" id="total-event-count" style="color: #2b3674;">...</h3>
                     </div>
                 </div>
             </div>
@@ -36,93 +36,148 @@
     </div>
 
     <div class="row g-4">
-        <div class="col-lg-6">
+        <div class="col-12">
             <div class="card border-0 shadow-sm h-100" style="border-radius: 12px;">
                 <div class="card-header bg-white border-0 pt-4 px-4 pb-0">
-                    <h5 class="fw-bold" style="color: #000;">Sinh viên mới cập nhật</h5>
+                    <h5 class="fw-bold" style="color: #2b3674;">Danh sách sự kiện đã tạo</h5>
                 </div>
                 <div class="card-body p-4">
-                    <div class="d-flex flex-column gap-3">
-                        <div class="d-flex align-items-center p-3 rounded-4" style="background: #fff5f5; border: 1px solid #f8e7e7;">
-                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold me-3" style="width: 45px; height: 45px; min-width: 45px; background-color: #4318ff !important;">K</div>
-                            <div class="flex-grow-1">
-                                <div class="fw-bold text-dark">Lê Duy Khang</div>
-                                <div class="text-muted small">MSSV: DH52200837</div>
-                            </div>
-                            <span class="badge" style="background: #dcfce7; color: #16a34a; font-size: 0.7rem; padding: 6px 12px;">Active</span>
-                        </div>
-                        <div class="d-flex align-items-center p-3 rounded-4" style="background: #fff5f5; border: 1px solid #f8e7e7;">
-                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold me-3" style="width: 45px; height: 45px; min-width: 45px; background-color: #4318ff !important;">K</div>
-                            <div class="flex-grow-1">
-                                <div class="fw-bold text-dark">Lê Duy Khánh</div>
-                                <div class="text-muted small">MSSV: DH............</div>
-                            </div>
-                            <span class="badge" style="background: #dcfce7; color: #16a34a; font-size: 0.7rem; padding: 6px 12px;">Active</span>
-                        </div>
-                        <div class="d-flex align-items-center p-3 rounded-4" style="background: #fff5f5; border: 1px solid #f8e7e7;">
-                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold me-3" style="width: 45px; height: 45px; min-width: 45px; background-color: #4318ff !important;">D</div>
-                            <div class="flex-grow-1">
-                                <div class="fw-bold text-dark">Nguyễn Trọng Dương</div>
-                                <div class="text-muted small">MSSV: DH............</div>
-                            </div>
-                            <span class="badge" style="background: #fee2e2; color: #dc2626; font-size: 0.7rem; padding: 6px 12px;">InActive</span>
-                        </div>
-                        <div class="d-flex align-items-center p-3 rounded-4" style="background: #fff5f5; border: 1px solid #f8e7e7;">
-                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold me-3" style="width: 45px; height: 45px; min-width: 45px; background-color: #4318ff !important;">D</div>
-                            <div class="flex-grow-1">
-                                <div class="fw-bold text-dark">Douw</div>
-                                <div class="text-muted small">MSSV: DH............</div>
-                            </div>
-                            <span class="badge" style="background: #dcfce7; color: #16a34a; font-size: 0.7rem; padding: 6px 12px;">Active</span>
-                        </div>
-                    </div>
-                    <div class="text-center mt-4">
-                        <a href="#" class="text-primary text-decoration-none fw-bold small"><i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-6">
-            <div class="card border-0 shadow-sm h-100" style="border-radius: 12px;">
-                <div class="card-body p-4">
-                    <div class="d-flex flex-column gap-3">
-                        <div class="p-3 rounded-4" style="background: #fff5f5; border: 1px solid #f8e7e7;">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div class="text-muted small">Hiến máu tình nguyện</div>
-                                <div class="fw-bold text-dark">20/15 giờ</div>
-                            </div>
-                            <div class="text-end fw-bold" style="color: #10b981; font-size: 0.75rem;">Hoàn thành xuất sắc</div>
-                        </div>
-                        <div class="p-3 rounded-4" style="background: #fff5f5; border: 1px solid #f8e7e7;">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div class="text-muted small">Mùa hè Xanh</div>
-                                <div class="fw-bold text-dark">15/15 giờ</div>
-                            </div>
-                            <div class="text-end fw-bold" style="color: #10b981; font-size: 0.75rem;">Đạt yêu cầu</div>
-                        </div>
-                        <div class="p-3 rounded-4" style="background: #fff5f5; border: 1px solid #f8e7e7;">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div class="text-muted small">Vắng mặt</div>
-                                <div class="fw-bold text-dark">5/15 giờ</div>
-                            </div>
-                            <div class="text-end fw-bold" style="color: #ef4444; font-size: 0.75rem;">Cảnh cáo</div>
-                        </div>
-                        <div class="p-3 rounded-4" style="background: #fff5f5; border: 1px solid #f8e7e7;">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div class="text-muted small">Hỗ trợ Tân SV</div>
-                                <div class="fw-bold text-dark">45/15 giờ</div>
-                            </div>
-                            <div class="text-end fw-bold" style="color: #10b981; font-size: 0.75rem;">Vượt chỉ tiêu</div>
-                        </div>
-                    </div>
-                    <div class="text-center mt-4">
-                        <a href="{{ url('/tong-ket') }}" class="text-primary text-decoration-none fw-bold small">Xem chi tiết thống kê <i class="fa-solid fa-arrow-right ms-1"></i>
-                    </a>
+                    <div id="latest-event-detail">
+                        <div class="text-center py-4 text-muted small">Đang tải dữ liệu sự kiện...</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="eventStudentModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="eventStudentModalTitle">Danh sách sinh viên đăng ký</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="event-student-list-body" class="small text-muted">Đang tải dữ liệu...</div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('head-scripts')
+<script>
+    async function xemChiTietDangKy(maSK, tenSK) {
+        const modalTitle = document.getElementById('eventStudentModalTitle');
+        const modalBody = document.getElementById('event-student-list-body');
+        modalTitle.innerText = `Danh sách đăng ký - ${tenSK}`;
+        modalBody.innerHTML = 'Đang tải dữ liệu...';
+
+        const modal = new bootstrap.Modal(document.getElementById('eventStudentModal'));
+        modal.show();
+
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/api/chi_tiet_dang_ky_su_kien?maSK=${encodeURIComponent(maSK)}`);
+            const result = await response.json();
+            if (!response.ok || !result.ok) {
+                modalBody.innerHTML = `<div class="text-danger">${result.thong_diep || 'Không tải được dữ liệu.'}</div>`;
+                return;
+            }
+
+            const ds = result.sinhVienDangKy || [];
+            if (ds.length === 0) {
+                modalBody.innerHTML = '<div class="text-muted">Chưa có sinh viên đăng ký sự kiện này.</div>';
+                return;
+            }
+
+            modalBody.innerHTML = `
+                <div class="table-responsive">
+                    <table class="table table-sm align-middle">
+                        <thead>
+                            <tr>
+                                <th>Mã SV</th>
+                                <th>Họ tên</th>
+                                <th>Lớp</th>
+                                <th>Khoa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${ds.map(sv => `
+                                <tr>
+                                    <td>${sv.maSV}</td>
+                                    <td>${sv.hoTen}</td>
+                                    <td>${sv.lop}</td>
+                                    <td>${sv.khoa}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        } catch (error) {
+            modalBody.innerHTML = '<div class="text-danger">Lỗi kết nối máy chủ AI.</div>';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const cacheBuster = new Date().getTime();
+        
+        try {
+            const resStudents = await fetch(`http://127.0.0.1:5000/api/danh_sach?t=${cacheBuster}`);
+            const students = await resStudents.json();
+            document.getElementById('total-sv-count').innerText = students.length;
+
+            const resEvents = await fetch(`http://127.0.0.1:5000/api/danh_sach_su_kien?t=${cacheBuster}`);
+            const events = await resEvents.json();
+            document.getElementById('total-event-count').innerText = events.length;
+            const latestContainer = document.getElementById('latest-event-detail');
+            if (!events || events.length === 0) {
+                latestContainer.innerHTML = '<p class="text-center text-muted small">Chưa có sự kiện nào.</p>';
+            } else {
+                latestContainer.innerHTML = `
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Tên sự kiện</th>
+                                    <th>Mã SK</th>
+                                    <th>Số lượng SV</th>
+                                    <th>Còn slot</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${events.map(ev => {
+                                    const soLuong = Number(ev.soLuong || 0);
+                                    const soDangKy = Number(ev.soDangKy || 0);
+                                    const slotConLai = Number(ev.choConLai ?? 0);
+                                    const slotText = slotConLai < 0 ? 'Không giới hạn' : Math.max(0, slotConLai);
+                                    return `
+                                        <tr>
+                                            <td class="fw-bold">${ev.tenSK}</td>
+                                            <td>${ev.maSK}</td>
+                                            <td>${soDangKy}${soLuong > 0 ? `/${soLuong}` : ''}</td>
+                                            <td>${slotText}</td>
+                                            <td class="text-end">
+                                                <button class="btn btn-sm btn-outline-primary" onclick="xemChiTietDangKy('${ev.maSK}', '${(ev.tenSK || '').replace(/'/g, "\\'")}')">Xem chi tiết</button>
+                                            </td>
+                                        </tr>
+                                    `;
+                                }).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            }
+
+        } catch (error) {
+            console.error("Lỗi cập nhật Dashboard:", error);
+            const latestContainer = document.getElementById('latest-event-detail');
+            if (latestContainer) {
+                latestContainer.innerHTML = '<div class="alert alert-danger small py-2 text-center">Mất kết nối máy chủ AI</div>';
+            }
+        }
+    });
+</script>
 @endsection

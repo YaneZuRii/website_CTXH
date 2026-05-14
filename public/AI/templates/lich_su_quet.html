@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Lịch sử điểm danh{% endblock %}
+{% block content %}
+<h1>Lịch sử điểm danh ({{ tong_nhom }} sự kiện, {{ tong_luot }} lượt)</h1>
+<form class="form-tim" method="get">
+    <input type="search" name="su_kien" value="{{ tu_khoa_sk }}" placeholder="Tìm sự kiện">
+    <input type="submit" value="Tìm">
+    {% if tu_khoa_sk %}<a href="{{ url_for('lich_su_quet') }}">Xóa</a>{% endif %}
+</form>
+{% for ten_sk, ds in nhom %}
+<h2 class="ten-su-kien">{{ ten_sk }} <span class="so-luot">({{ ds|length }} lượt)</span></h2>
+<div class="the-su-kien">
+    {% for r in ds %}
+    <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.5rem;">
+        <img src="{{ url_for('anh_lich_su', ten_tep=r.duong_anh) }}" class="anh-nho" alt="Ảnh quét">
+        <div style="flex: 1; min-width: 0;">
+            <div><strong>{{ r.ho_ten }}</strong> ({{ r.ma_sv }})</div>
+            <div style="font-size: 0.88rem; color: #555;">{{ r.thoi_gian }}</div>
+        </div>
+        <form class="form-xoa-nho" method="post" action="{{ url_for('xoa_mot_diem_danh', diem_danh_id=r.id) }}" onsubmit="return confirm('Xóa lượt này?')" style="margin-left: auto;">
+            <input type="hidden" name="tiep_loc_su_kien" value="{{ ten_sk }}">
+            <button type="submit" class="nut-xoa">Xóa</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
+{% if not nhom %}
+<p>Chưa có lịch sử. <a href="{{ url_for('diem_danh') }}">Bắt đầu điểm danh</a>.</p>
+{% endif %}
+{% endblock %}
+
