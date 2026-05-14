@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Danh sách sinh viên{% endblock %}
+{% block content %}
+<h1>Danh sách sinh viên ({{ sinh_vien|length }})</h1>
+<form class="form-tim" method="get">
+    <input type="search" name="q" value="{{ tu_khoa }}" placeholder="Tìm MSSV hoặc tên">
+    <input type="submit" value="Tìm">
+    {% if tu_khoa %}<a href="{{ url_for('danh_sach') }}">Xóa</a>{% endif %}
+</form>
+{% if not sinh_vien %}
+    <p>Chưa có sinh viên nào. <a href="{{ url_for('dang_ky') }}">Đăng ký ngay</a>.</p>
+{% else %}
+<div class="bang-wrap">
+    <table class="bang">
+        <thead>
+            <tr>
+                <th>MSSV</th>
+                <th>Họ tên</th>
+                <th>Ngày sinh</th>
+                <th>Lớp</th>
+                <th>Khoa</th>
+                <th>Tạo lúc</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sv in sinh_vien %}
+            <tr>
+                <td><code>{{ sv.ma_sv }}</code></td>
+                <td>{{ sv.ho_ten }}</td>
+                <td>{{ sv.ngay_sinh or '' }}</td>
+                <td>{{ sv.lop or '' }}</td>
+                <td>{{ sv.khoa or '' }}</td>
+                <td>{{ sv.thoi_gian_tao[:10] }}</td>
+                <td class="cot-thao-tac">
+                    <div class="cac-nut-hang">
+                        <a href="{{ url_for('sua_sinh_vien', ma_sv=sv.ma_sv) }}" class="nut-lien-ket">Sửa</a>
+                        <form class="form-xoa-nho" method="post" action="{{ url_for('xoa_sinh_vien', ma_sv=sv.ma_sv) }}" onsubmit="return confirm('Xóa sinh viên và lịch sử?')">
+                            <button type="submit" class="nut-xoa">Xóa</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+<p><a href="{{ url_for('dang_ky') }}" class="link-them-sv">➕ Thêm sinh viên mới</a></p>
+{% endblock %}
+

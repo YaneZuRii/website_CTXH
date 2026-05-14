@@ -1,0 +1,364 @@
+/* Giao dien don gian + thanh trai */
+
+body {
+  font-family: system-ui, "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 1rem 1.25rem 2rem;
+  background: #f5f5f5;
+  color: #222;
+  line-height: 1.45;
+  font-size: 15px;
+}
+
+body.co-thanh-trai {
+  display: flex;
+  min-height: 100vh;
+  padding: 0;
+  align-items: stretch;
+}
+
+.thanh-trai {
+  width: 208px;
+  flex-shrink: 0;
+  background: #eaeaea;
+  border-right: 1px solid #bdbdbd;
+  padding: 1rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.thanh-trai .ten-app {
+  margin: 0 0 0.85rem;
+  padding: 0 0.35rem 0.75rem;
+  border-bottom: 1px solid #ccc;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.thanh-trai .ten-app a {
+  color: #111;
+  text-decoration: none;
+}
+
+.thanh-trai .ten-app a:hover {
+  text-decoration: underline;
+  color: #0b57d0;
+}
+
+.menu-trai {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.menu-trai a {
+  display: block;
+  padding: 0.45rem 0.45rem;
+  color: #222;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+.menu-trai a:hover {
+  background: #d8d8d8;
+  color: #0b57d0;
+}
+
+.noi-dung-chinh {
+  flex: 1;
+  padding: 1rem 1.35rem 2rem;
+  overflow-x: auto;
+  min-width: 0;
+}
+
+.lo {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lo.rong {
+  max-width: 1000px;
+}
+
+h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+p.mo-dau {
+  margin: 0 0 1rem;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.nav {
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.nav a {
+  margin-right: 0.75rem;
+}
+
+a {
+  color: #0b57d0;
+}
+
+label {
+  display: block;
+  margin-top: 0.85rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="search"],
+input[type="file"] {
+  font: inherit;
+  margin-top: 0.25rem;
+  padding: 0.45rem 0.5rem;
+  max-width: 100%;
+  width: 420px;
+  box-sizing: border-box;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+input[type="file"] {
+  width: auto;
+  max-width: 100%;
+}
+
+button,
+input[type="submit"] {
+  font: inherit;
+  margin-top: 1rem;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: #fff;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background: #eee;
+}
+
+.thong-bao {
+  padding: 0.65rem 0.75rem;
+  margin: 0.75rem 0;
+  background: #e8f2ff;
+  border: 1px solid #8ab4f8;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.form-tim {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0.75rem 0;
+}
+
+.form-tim input[type="search"] {
+  flex: 1;
+  min-width: 200px;
+}
+
+.ket-qua-tim {
+  font-size: 0.88rem;
+  color: #444;
+  margin: 0 0 0.75rem;
+}
+
+ul.menu {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+ul.menu li {
+  margin: 0.4rem 0;
+}
+
+.bang-wrap {
+  overflow-x: auto;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+table.bang {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  background: #fff;
+}
+
+table.bang th,
+table.bang td {
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0.6rem;
+  text-align: left;
+  vertical-align: middle;
+}
+
+table.bang th {
+  background: #eee;
+  font-weight: 600;
+}
+
+.anh-nho {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  display: block;
+}
+
+h2.ten-su-kien {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.35rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid #0b57d0;
+}
+
+.so-luot {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0 0 0.5rem;
+}
+
+.the-su-kien {
+  padding: 0.6rem 0.75rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.vung-video-wrap {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  border: 2px solid #333;
+  background: #111;
+  line-height: 0;
+}
+
+.vung-video-wrap video {
+  max-width: 640px;
+  width: 100%;
+  display: block;
+}
+
+.lop-khung-mat {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.lop-khung-mat .khungVien {
+  position: absolute;
+  border: 2px solid #0a0;
+  box-sizing: border-box;
+}
+
+.hop-trang-thai {
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  min-height: 3.5rem;
+  font-size: 0.82rem;
+  white-space: pre-wrap;
+  font-family: ui-monospace, monospace;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+code {
+  background: #e8e8e8;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.88em;
+}
+
+canvas#canvas {
+  display: none;
+}
+
+.link-them-sv {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cot-thao-tac {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.cac-nut-hang {
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.cac-nut-hang .nut-lien-ket {
+  margin-right: 0.5rem;
+  font-size: 0.88rem;
+}
+
+.form-xoa-nho {
+  display: inline;
+}
+
+.form-xoa-nho .nut-xoa {
+  margin-top: 0;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.85rem;
+  background: #fff;
+  color: #b00020;
+  border: 1px solid #c62828;
+}
+
+.form-xoa-nho .nut-xoa:hover {
+  background: #ffebee;
+}
+
+.quan-ly-lien-quan {
+  margin-top: 1.25rem;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 640px) {
+  body.co-thanh-trai {
+    flex-direction: column;
+  }
+
+  .thanh-trai {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #bdbdbd;
+  }
+
+  .menu-trai {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+}

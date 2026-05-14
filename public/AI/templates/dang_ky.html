@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Đăng ký sinh viên{% endblock %}
+{% block content %}
+<h1>Đăng ký sinh viên mới</h1>
+<p class="mo-dau">Nhập thông tin và ảnh khuôn mặt rõ nét (mặt chính diện, không kính, sáng tốt).</p>
+<form method="post" enctype="multipart/form-data">
+    <label>Mã sinh viên (MSSV):
+        <input type="text" name="ma_sv" required maxlength="20" pattern="[0-9a-zA-Z_]+">
+    </label>
+    <label>Họ tên:
+        <input type="text" name="ho_ten" required>
+    </label>
+    <label>Ngày sinh (YYYY-MM-DD):
+        <input type="date" name="ngay_sinh" required>
+    </label>
+    <label>Lớp:
+        <input type="text" name="lop">
+    </label>
+    <label>Khoa:
+        <input type="text" name="khoa">
+    </label>
+    <label>Ảnh khuôn mặt:
+        <input type="file" name="anh" accept="image/*" required>
+    </label>
+    <input type="submit" value="Đăng ký">
+</form>
+<p class="hint"><strong>Lưu ý:</strong> Mỗi MSSV chỉ đăng ký 1 lần. Ảnh dùng để nhận diện sau.</p>
+{% endblock %}
+

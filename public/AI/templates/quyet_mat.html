@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Quét khuôn mặt{% endblock %}
+{% block head %}
+<script>
+let tenSuKien = '{{ ten_su_kien }}';
+let mediaStream = null;
+async function batDauCamera() {
+    try {
+        mediaStream = await navigator.mediaDevices.getUserMedia({video: {facingMode: 'user', width: {ideal: 640}}});
+        document.querySelector('video').srcObject = mediaStream;
+    } catch(e) {
+        document.getElementById('trang-thai').textContent = 'Lỗi camera: ' + e;
+    }
+}
+async function guiAnh() {
+    const canvas = document.getElementById('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0);
+    const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+    const formData = new FormData();
+    formData.append('ten_su_kien', tenSuKien);
+    formData.append('anh', dataUrl.split(',')[1], 'frame.jpg');
+    const res = await fetch('/api_quet_tu_dong', {method: 'POST', body: formData});
+    const ketQua = await res.json();
+    hienThiKetQua(ketQua);
+}
+function hienThiKetQua(kq) {
+    let s = '';
+    if (!kq.ok) s += '❌ ' + kq.thong_diep;
+    else {
+        if (kq.da_luu) s += '✅ Đã lưu: ';
+        else s += 'ℹ️ ';
+        s += kq.thong_diep;
+        if (kq.cac_luu?.length) {
+            s += '\n👤 ' + kq.cac_luu.map(x => x.ho_ten + ' (' + x.ma_sv + ')').join(', ');
+        }
+    }
+    document.getElementById('trang-thai').textContent = s;
+    if (kq.khung_mat) {
+        veKhungMat(kq.khung_mat);
+    }
+}
+function veKhungMat(khung) {
+    const ctx = canvas.getContext('2d');
+    ctx.strokeStyle = '#0f0';
+    ctx.lineWidth = 3;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const rect = document.querySelector('.vung-video-wrap');
+    const rw = rect.clientWidth / canvas.width;
+    const rh = rect.clientHeight / canvas.height;
+    for (let k of khung) {
+        ctx.strokeRect(k.x * canvas.width, k.y * canvas.height, k.w * canvas.width, k.h * canvas.height);
+    }
+    const overlay = document.querySelector('.lop-khung-mat canvas');
+    overlay.width = rect.clientWidth;
+    overlay.height = rect.clientHeight;
+    const octx = overlay.getContext('2d');
+    octx.clearRect(0, 0, overlay.width, overlay.height);
+    octx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, overlay.width, overlay.height);
+}
+document.addEventListener('DOMContentLoaded', batDauCamera);
+</script>
+{% endblock %}
+{% block content %}
+<h1>Quét khuôn mặt "{{ ten_su_kien }}"</h1>
+<div class="vung-video-wrap">
+    <video id="video" autoplay playsinline muted></video>
+    <div class="lop-khung-mat">
+        <canvas></canvas>
+    </div>
+</div>
+<button onclick="guiAnh()">📸 Quét ngay</button>
+<div id="trang-thai" class="hop-trang-thai">Khởi động camera...</div>
+<p class="hint">Giữ mặt trong khung xanh, bấm Quét ngay liên tục để kiểm tra.</p>
+{% endblock %}
+

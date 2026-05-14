@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Nhập tên sự kiện{% endblock %}
+{% block content %}
+<h1>Nhập tên sự kiện</h1>
+<p class="mo-dau">Nhập tên hội thảo/sự kiện để bắt đầu quét khuôn mặt điểm danh.</p>
+<form method="post">
+    <label>Tên sự kiện:
+        <input type="text" name="ten_su_kien" required placeholder="VD: Hoi thao AI 2024">
+    </label>
+    <input type="submit" value="Bắt đầu quét">
+</form>
+<p class="hint">Mỗi MSSV + sự kiện chỉ lưu 1 lần duy nhất.</p>
+{% endblock %}
+

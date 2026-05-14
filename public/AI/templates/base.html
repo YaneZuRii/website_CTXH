@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{% block title %}Điểm danh khuôn mặt{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='giao_dien.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body class="co-thanh-trai">
+    <nav class="thanh-trai">
+        <div class="ten-app">
+            <a href="{{ url_for('goc') }}">Điểm danh AI</a>
+        </div>
+        <div class="menu-trai">
+            <a href="{{ url_for('diem_danh') }}">📋 Nhập sự kiện</a>
+            <a href="{{ url_for('quet_mat') }}">🎥 Quét mặt</a>
+            <a href="{{ url_for('dang_ky') }}">➕ Đăng ký SV</a>
+            <a href="{{ url_for('danh_sach') }}">📋 Danh sách SV</a>
+            <a href="{{ url_for('lich_su_quet') }}">📈 Lịch sử</a>
+        </div>
+    </nav>
+    <main class="noi-dung-chinh">
+        <div class="lo">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="thong-bao">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+</body>
+</html>
+
